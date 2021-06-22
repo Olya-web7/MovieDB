@@ -1,13 +1,3 @@
-/*
-2) Если название фильма больше, чем 21 символ - обрезать его и добавить три точки
-
-3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
-
-4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
-"Добавляем любимый фильм"
-
-5) Фильмы должны быть отсортированы по алфавиту */
-
 'use strict';
 
 const movieDB = {
@@ -48,7 +38,27 @@ function addFilm(e) {
     e.preventDefault;
     movieDB.movies.push(input.value);
 }
-/*1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
-новый фильм добавляется в список. Страница не должна перезагружаться.
-Новый фильм должен добавляться в movieDB.movies.
-Для получения доступа к значению input - обращаемся к нему как input.value;*/
+
+movieDB.movies.forEach((movie, i) => {
+    if (movie.length > 21) {
+        movie = movie.slice(0, 20) + '...';
+    }
+
+})
+
+/*3) При клике на мусорную корзину - элемент будет удаляться из списка*/
+const deleteBtn = document.querySelectorAll('.delete');
+const listFilm = document.querySelectorAll('.promo__interactive-list');
+deleteBtn.forEach(i => {
+
+    i.addEventListener('click', (i) => {
+        console.log(listFilm[i]);
+        // e.currentTarget.remove();
+    })
+});
+// const checkbox = document.querySelector('.yes').previousElementSibling;
+// checkbox.addEventListener('click', e => {
+//     if (e.target) {
+//         console.log("Добавляем любимый фильм");
+//     }
+// });
